@@ -1,0 +1,12 @@
+title = "Gitleaks Config"
+version = 2
+
+[[allowlist]]
+regexes = []
+paths = [
+    'tests/',
+    '*.md',
+    '*.toml',
+    '*.yml',
+    '*.json',
+]

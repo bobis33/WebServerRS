@@ -1,0 +1,58 @@
+services:
+  service_postgresql:
+    image: postgres:18.1-alpine3.22
+    container_name: postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "PGPASSWORD=${DB_PASSWORD} pg_isready -U ${DB_USER} -d ${DB_NAME} -p ${DB_PORT}"]
+      interval: 10s
+      retries: 5
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf -c port=${DB_PORT}
+    volumes:
+      - ./postgresql/postgresql.conf:/etc/postgresql/postgresql.conf:ro,Z
+      - ./postgresql/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro,Z
+      - ./postgresql/initdb:/docker-entrypoint-initdb.d:ro,Z
+      - volume_postgresql-data:/var/lib/postgresql:z
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_INITDB_ARGS: "--data-checksums --auth-local=scram-sha-256 --auth-host=scram-sha-256"
+    restart: unless-stopped
+    stop_signal: SIGINT
+    networks:
+      - network_postgresql
+
+  service_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        APP_NAME: "webserver_rs"
+    image: server:latest
+    container_name: server
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    environment:
+      PORT: ${API_PORT}
+      POSTGRES_URL: "postgres://${DB_USER}:${DB_PASSWORD}@service_postgresql:${DB_PORT}/${DB_NAME}"
+    depends_on:
+      service_postgresql:
+        condition: service_healthy
+    networks:
+      - network_postgresql
+      - network_server
+
+volumes:
+  volume_postgresql-data:
+    name: volume_postgresql-data
+    driver: local
+
+networks:
+  network_postgresql:
+    name: network_postgresql
+    driver: bridge
+    internal: true
+
+  network_server:
+    name: network_server
+    internal: false

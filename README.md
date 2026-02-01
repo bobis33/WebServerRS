@@ -1,9 +1,9 @@
-[![CI](https://github.com/bobis33/RS_API/actions/workflows/ci.yml/badge.svg)](https://github.com/bobis33/RS-API/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/bobis33/RS_API/actions/workflows/codeql.yml/badge.svg)](https://github.com/bobis33/RS-API/actions/workflows/codeql.yml)
-[![Documentation deployment](https://github.com/bobis33/RS-API/actions/workflows/deploy-documentation.yml/badge.svg)](https://github.com/bobis33/RS-API/actions/workflows/deploy-documentation.yml)
-[![License](https://img.shields.io/github/license/bobis33/RS_API.svg)](https://github.com/bobis33/RS-API/blob/main/LICENSE.md)
+[![CI](https://github.com/bobis33/WebServerRS/actions/workflows/ci.yml/badge.svg)](https://github.com/bobis33/WebServerRS/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/bobis33/WebServerRS/actions/workflows/codeql.yml/badge.svg)](https://github.com/bobis33/WebServerRS/actions/workflows/codeql.yml)
+[![Documentation deployment](https://github.com/bobis33/WebServerRS/actions/workflows/deploy-documentation.yml/badge.svg)](https://github.com/bobis33/WebServerRS/actions/workflows/deploy-documentation.yml)
+[![License](https://img.shields.io/github/license/bobis33/WebServerRS.svg)](https://github.com/bobis33/WebServerRS/blob/main/LICENSE.md)
 
-# RS-API
+# WebServerRS
 
 ## Prerequisites
 - [Rust](https://www.rust-lang.org/tools/install)
@@ -15,6 +15,8 @@
 ```bash
 cargo build
 ```
+> [!IMPORTANT]
+> in release mode, use `--no-default-features` option.
 
 ### Run
 
@@ -47,11 +49,11 @@ cargo clippy
 ```
 
 ## Security
-See the [security policy](https://github.com/bobis33/RS_API/blob/main/SECURITY.md) for more information.
+See the [security policy](https://github.com/bobis33/WebServerRS/blob/main/SECURITY.md) for more information.
 
 ## Contributing
 
-Want to contribute? See [contributing guidelines](https://github.com/bobis33/RS_API/blob/main/CONTRIBUTING.md).
+Want to contribute? See [contributing guidelines](https://github.com/bobis33/WebServerRS/blob/main/CONTRIBUTING.md).
 
 ## License
-This project is licensed under the MIT License. See the [license](https://github.com/bobis33/RS_API/blob/main/LICENSE.md) file for details.
+This project is licensed under the MIT License. See the [license](https://github.com/bobis33/WebServerRS/blob/main/LICENSE.md) file for details.
