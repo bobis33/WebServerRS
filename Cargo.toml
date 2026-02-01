@@ -1,0 +1,22 @@
+[package]
+name = "api_rs"
+version = "0.0.1"
+description = ""
+edition = "2024"
+authors = ["Masina Elliot <masina.elliot@hotmail.fr>"]
+readme = "README.md"
+license-file = "LICENSE.md"
+homepage = "https://github.com/bobis33/RS-API#readme"
+repository = "https://github.com/bobis33/RS-API"
+documentation = "https://bobis33.github.io/RS-API/api_rs/"
+keywords = ["rendering", "engine", "graphics", "rust", "vulkan"]
+exclude = [".gitignore", ".editorconfig", "target/*", "tests/*", ".github/*"]
+include = ["src/**", "Cargo.toml", "README.md", "LICENSE.md", "SECURITY.md"]
+publish = false
+
+[dependencies]
+
+[lints.clippy]
+all = "warn"
+pedantic = "warn"
+nursery = "warn"
